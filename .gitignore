@@ -1,0 +1,8 @@
+.DS_Store
+# build and test files: stay local
+diff/
+exports/
+spec/
+tools/
+review.html
+images/raw/

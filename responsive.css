@@ -1,0 +1,290 @@
+/* Air Ideal 100 Years: responsive layer. Loaded last.
+   1440 and up is the verified Figma layout and nothing here touches it (every rule sits in a max-width query,
+   except the menu button, which only exists below 1024).
+   Breakpoints (DESIGN.md): 1024-1439 fluid, same layout · 768-1023 tablet, sections stack, menu panel · ≤767 mobile, one column.
+   The duct line is redrawn from the layout below 1440 by motion/duct.js (html.duct-live). */
+
+.menu-btn { display: none; }
+
+/* =====================================================================
+   1024 - 1439: fluid, same layout as the frame
+   ===================================================================== */
+@media (max-width: 1439px) {
+  :root {
+    --gl: clamp(32px, 9.72vw, 140px);   /* left gutter: 140 at 1440 */
+    --gr: clamp(32px, 9.72vw, 140px);   /* right gutter */
+    --sh: clamp(200px, 20.6vw, 296px);  /* hero strip photo height */
+  }
+  .wrap { width: 100%; }
+  .h2 { font-size: clamp(30px, 3.34vw, 48px); line-height: 1.15; }
+
+  /* header: logo | nav | phone, laid out with flex instead of Figma's x positions */
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 0 clamp(16px, 5.14vw, 74px) 0 clamp(16px, 4.93vw, 71px); }
+  .logo, .nav, .phone { position: relative; left: auto; top: auto; }
+  .logo { flex: none; align-self: flex-start; }
+  .nav { gap: clamp(18px, 2.15vw, 31px); }
+  .nav a { width: auto !important; }
+  .js .site-header.is-scrolled .nav, .js .site-header.is-scrolled .phone { translate: 0 -16px; }
+
+  /* hero */
+  .hero, .hero .wrap { height: auto; }
+  .hero .wrap { padding: 160px var(--gr) 0 var(--gl); }
+  .centennial { margin: 0 auto; }
+  .hero-script { margin: 9px auto 0; width: max-content; font-size: clamp(88px, 12.64vw, 182px); line-height: 1.022; }
+  .js [data-write] { margin: -21px auto -90px; }
+  .hero-title { margin: 9px 0 0; width: auto; font-size: clamp(30px, 4.3vw, 62px); line-height: 1.02; }
+  .hero-row { margin: 40px 0 0; gap: clamp(28px, 4vw, 59px); justify-content: space-between; }
+  .hero-intro { width: auto; flex: 0 1 661px; }
+  .hero-ctas { margin: 42px 0 0; flex: none; }
+  .hero-strip { position: relative; top: auto; left: auto; margin: clamp(48px, 6vw, 80px) calc(var(--gr) * -1) calc(var(--sh) * -.594) calc(var(--gl) * -1); }
+  .hero-strip .photo { width: calc(var(--sh) * 1.114); height: var(--sh); border-radius: clamp(20px, 2.4vw, 35px); }
+
+  /* legacy */
+  .legacy .wrap { height: auto; padding: calc(var(--sh) * .594 + clamp(56px, 6.5vw, 93px)) var(--gr) clamp(72px, 11vw, 163px) var(--gl);
+    gap: clamp(32px, 6.7vw, 96px); }
+  .legacy-copy { margin-left: 0; width: auto; flex: 1 1 620px; }
+  .milestones { gap: 8px; }
+  .milestone { width: auto; flex: 1 1 0; height: auto; min-height: 139px; }
+  .legacy-photo { margin: 44px 0 0; flex: 0 1 444px; width: auto; height: auto; aspect-ratio: 444 / 642; }
+
+  /* decades */
+  .decades .wrap { height: auto; padding: clamp(72px, 8.3vw, 120px) var(--gr) clamp(80px, 8.9vw, 128px) var(--gl); gap: clamp(64px, 8.3vw, 120px); }
+  .heading-row { gap: clamp(32px, 4.4vw, 64px); }
+  .chapters { gap: clamp(72px, 8.9vw, 128px); }
+  .chapter { gap: clamp(48px, 8.9vw, 128px); }
+  .chapter-media, .chapter-text { width: auto; flex: 1 1 0; min-width: 0; }
+  .chapter-media .main { width: 100%; height: auto; aspect-ratio: 516 / 355; }
+  .pair .photo { width: auto; flex: 1 1 0; height: auto; aspect-ratio: 1; }
+  .chapter-body { width: auto; max-width: 470px; }
+
+  /* people & projects */
+  .people .wrap { height: auto; padding: clamp(72px, 6.6vw, 95px) var(--gr) clamp(88px, 8.5vw, 122px) var(--gl); }
+  .people-head { margin-left: 0; }
+  .people-head > div { width: auto; flex: 0 1 548px; }
+  .people-head .lead { width: auto; flex: 1 1 0; max-width: 548px; margin-left: auto; padding-left: clamp(32px, 4.4vw, 64px); }
+  .projects { margin: 49px 0 0; gap: clamp(16px, 1.5vw, 22px); }
+  .directory { width: auto; flex: 1 1 658px; height: auto; min-height: 569px; padding: 42px clamp(20px, 2.5vw, 26px) 40px clamp(20px, 2vw, 29px); }
+  .rows, .project { width: 100%; }
+  .preview { width: auto; flex: 0 1 477px; height: auto; min-height: 569px; margin-left: 0; }
+  .preview-cap strong, .preview-cap span { white-space: normal; }
+
+  .quote { width: auto; height: auto; margin: 50px 0 0; padding: clamp(36px, 5.5vw, 79px); align-items: center; }
+  .quote .photo { width: clamp(220px, 25vw, 360px); height: auto; aspect-ratio: 360 / 449; }
+  .quote-body { margin: 0 0 0 clamp(28px, 4.3vw, 62px); width: auto; flex: 1 1 0; max-width: 592px; }
+  .quote blockquote p { font-size: clamp(22px, 2.36vw, 34px); line-height: 1.41; }
+
+  .video { width: auto; height: clamp(420px, 34.5vw, 497px); margin: 44px 0 0; }
+  .video-copy { left: clamp(28px, 3.9vw, 56px); top: 50%; translate: 0 -50%; width: min(460px, calc(100% - 56px)); }
+
+  .recognition { margin: clamp(64px, 6.7vw, 96px) 0 0; gap: clamp(32px, 4.4vw, 64px); }
+  .recognition-copy { flex: 0 1 365px; width: auto; }
+  .seals { width: auto; flex: 1 1 auto; justify-content: flex-end; }
+
+  /* centennial series */
+  .series .wrap { height: auto; padding: clamp(72px, 5.8vw, 83px) var(--gr) clamp(88px, 8.7vw, 125px) var(--gl); }
+  .series-head { gap: 32px; }
+  .series-head > div { width: auto; flex: 0 1 720px; }
+  .card { height: auto; min-height: 388px; }
+  .card .photo { width: clamp(180px, 18vw, 260px); height: auto; }
+  .card-body { overflow: visible; }
+
+  /* next 100 years */
+  .next .wrap { height: auto; padding: 175px var(--gr) 114px var(--gl); }
+  .outlet { left: calc(50% - 48px); }
+  .next-copy { position: relative; left: auto; top: auto; width: auto; }
+  .next-copy h2 { width: auto; font-size: clamp(34px, 4.3vw, 62px); line-height: 1.08; }
+  .next-copy p { width: auto; max-width: 720px; }
+  .next-ctas { flex-wrap: wrap; justify-content: center; }
+
+  /* footer: the absolute Figma positions become a grid of columns */
+  .site-footer .wrap { height: auto; display: grid; grid-template-columns: 196px repeat(4, minmax(0, 1fr)); column-gap: clamp(24px, 3.4vw, 56px);
+    row-gap: 40px; padding: 53px var(--gr) 40px var(--gl); }
+  .footer-lines { height: 100%; }
+  .site-footer .abs { position: static !important; }
+  .f-col { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .f-col .f-head { margin: 12px 0 10px; }
+  .f-link { white-space: normal !important; }
+  .f-logo { width: 196px; height: auto; }
+  .f-social { display: flex; gap: 9px; }
+  .social { position: static; }
+  .f-bottom { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; row-gap: 14px; margin-top: 40px; }
+  .f-bottom .f-small:first-child { grid-row: 1 / 3; }
+  .f-bottom > :not(:first-child) { justify-self: end; }
+
+  /* duct line: the fixed Figma SVG only fits 1440. Below it, duct.js redraws it from the layout */
+  html:not(.duct-live) .duct-layer { display: none; }
+}
+
+/* the nav gets tight on small laptops */
+@media (max-width: 1279px) {
+  .nav a { font-size: 16px; gap: 8px; }
+  .phone { font-size: 15px; padding: 6px 16px; }
+  .recognition { flex-direction: column; align-items: flex-start; }
+  .recognition-copy { flex: none; }
+  .seals { justify-content: flex-start; }
+  /* footer: logo column + two columns of links */
+  .site-footer .wrap { grid-template-columns: 196px repeat(2, minmax(0, 1fr)); }
+  .f-brand { grid-row: span 2; }
+}
+
+/* =====================================================================
+   768 - 1023: tablet. Sections stack, the menu becomes a panel.
+   The left gutter is wider so the duct line has its own lane (like v2).
+   ===================================================================== */
+@media (max-width: 1023px) {
+  :root { --gl: 64px; --gr: 32px; }
+
+  /* header + menu panel */
+  .site-header .wrap { height: 80px; gap: 12px; }
+  .logo, .logo img { width: 120px; height: 80px; }
+  .js .site-header::before { scale: 1 .7; }
+  .js .site-header.is-scrolled .logo { scale: .7; }
+  .phone { margin-left: auto; }
+  .js .site-header.is-scrolled .phone, .js .site-header.is-scrolled .menu-btn { translate: 0 -12px; }
+  .menu-btn { position: relative; display: grid; place-content: center; gap: 5px; width: 40px; height: 40px; flex: none;
+    border-radius: 999px; background: rgba(255, 255, 255, .22); pointer-events: auto; transition: translate .3s ease-in-out; }
+  .menu-btn span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--white);
+    transition: translate .2s cubic-bezier(.23, 1, .32, 1), rotate .2s cubic-bezier(.23, 1, .32, 1), opacity .2s; }
+  .site-header.is-open .menu-btn span:nth-child(1) { translate: 0 7px; rotate: 45deg; }
+  .site-header.is-open .menu-btn span:nth-child(2) { opacity: 0; }
+  .site-header.is-open .menu-btn span:nth-child(3) { translate: 0 -7px; rotate: -45deg; }
+  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0;
+    padding: 8px var(--gr) 24px var(--gl); background: var(--heritage-blue); box-shadow: 0 12px 24px -12px rgba(0, 0, 0, .35);
+    visibility: hidden; opacity: 0; clip-path: inset(0 0 100% 0);
+    transition: opacity .2s cubic-bezier(.23, 1, .32, 1), clip-path .25s cubic-bezier(.23, 1, .32, 1), visibility 0s .25s; }
+  .site-header.is-open .nav { visibility: visible; opacity: 1; clip-path: inset(0); transition-delay: 0s; }
+  .nav a { justify-content: space-between; padding: 14px 0; font-size: 18px; border-bottom: 1px solid rgba(255, 255, 255, .14); }
+  .js .nav a::before { display: none; }
+  .js .site-header.is-scrolled .nav { translate: 0 -24px; }
+  .site-header.is-open { pointer-events: auto; }
+  .site-header.is-open::after { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--heritage-blue); }
+
+  /* hero */
+  .hero .wrap { padding-top: 136px; }
+  .hero-row { flex-direction: column; gap: 0; }
+  .hero-intro { flex: none; max-width: 640px; }
+  .hero-ctas { margin-top: 28px; }
+
+  /* legacy */
+  .legacy .wrap { flex-direction: column; gap: 56px; }
+  .legacy-copy { flex: none; max-width: 640px; }
+  .legacy-photo { margin: 0; flex: none; width: min(100%, 420px); }
+
+  /* decades: text first, then the photos */
+  .heading-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .heading-row > * { flex: none; }
+  .chapter { flex-direction: column; gap: 32px; }
+  .chapter-text { order: -1; flex: none; width: 100%; }
+  .chapter-media { flex: none; width: 100%; max-width: 640px; }
+
+  /* people: photo above the list */
+  .people-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .people-head > div { flex: none; }
+  .people-head .lead { flex: none; margin-left: 0; padding-left: 0; max-width: 640px; }
+  .projects { flex-direction: column; gap: 16px; }
+  .preview { order: -1; flex: none; width: 100%; min-height: 0; aspect-ratio: 4 / 3; max-height: 520px; }
+  .directory { flex: none; min-height: 0; }
+
+  /* seals: four in a row that fits the width */
+  .seals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 728px; }
+  .seal { width: 100%; height: auto; aspect-ratio: 1; padding: 0 12px; }
+  .seal strong, .seal b, .seal span { width: auto; max-width: 130px; }
+
+  /* series */
+  .series-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .series-head > div { flex: none; }
+  .articles { flex-direction: column; }
+
+  /* next */
+  .next .wrap { padding-left: var(--gr); }
+
+  /* footer: logo on its own row, then two columns */
+  .site-footer .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .f-brand { grid-column: 1 / -1; grid-row: auto; }
+}
+
+/* =====================================================================
+   ≤767: mobile, one column
+   ===================================================================== */
+@media (max-width: 767px) {
+  :root { --gl: 40px; --gr: 16px; --sh: 196px; }
+  .h2 { font-size: 30px; line-height: 35px; }
+  .lead { font-size: 17px; line-height: 29px; }
+
+  /* header: logo, phone icon, menu */
+  .site-header .wrap { height: 64px; padding: 0 16px; }
+  .logo, .logo img { width: 96px; height: 64px; }
+  .js .site-header::before { scale: 1 .75; }
+  .js .site-header.is-scrolled .logo { scale: .75; }
+  .phone { width: 40px; height: 40px; padding: 0; justify-content: center; }
+  .phone__num { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .js .site-header.is-scrolled .phone, .js .site-header.is-scrolled .menu-btn { translate: 0 -8px; }
+  .js .site-header.is-scrolled .nav { translate: 0 -16px; }
+  .nav { padding-left: 16px; padding-right: 16px; }
+
+  /* hero */
+  .hero .wrap { padding-top: 104px; }
+  .centennial { font-size: 17px; }
+  .hero-script { font-size: clamp(76px, 24vw, 104px); }
+  .hero-title { font-size: clamp(26px, 7.8vw, 34px); }
+  .hero-intro { font-size: 17px; line-height: 29px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero-ctas .btn, .next-ctas .btn { justify-content: center; }
+
+  /* legacy */
+  .milestones { flex-direction: column; }
+  .milestone { flex: none; min-height: 0; }
+  .legacy-copy p { font-size: 17px; line-height: 29px; }
+
+  /* decades */
+  .decades { border-radius: 20px; }
+  .era-year { font-size: 48px; line-height: 48px; }
+  .era-range { font-size: 24px; line-height: 28px; }
+  .chapter-body h3 { font-size: 22px; line-height: 28px; }
+  .chapter-body p { font-size: 16px; line-height: 28px; }
+  .pair { gap: 10px; }
+
+  /* people */
+  .directory { padding: 28px 14px 20px; border-radius: 20px; }
+  .directory h3 { font-size: 22px; line-height: 30px; padding-left: 6px; }
+  .rows { margin-top: 16px; }
+  .project { height: auto; min-height: 72px; padding: 14px 10px; gap: 12px; }
+  .project .name { font-size: 17px; line-height: 22px; }
+  .project .where { font-size: 13px; line-height: 19px; }
+  .project .year { font-size: 15px; line-height: 20px; }
+  .rows::after { top: auto; bottom: 0; }
+  .preview { aspect-ratio: 4 / 5; border-radius: 20px; }
+  .quote { flex-direction: column; align-items: flex-start; padding: 28px 20px 32px; border-radius: 20px; }
+  .quote .photo { width: min(100%, 220px); border-radius: 20px; }
+  .quote-body { margin: 28px 0 0; }
+  .quote-mark { font-size: 96px; line-height: 56px; height: 56px; }
+  .quote blockquote p { font-size: 22px; line-height: 31px; }
+  .video { height: auto; aspect-ratio: 4 / 5; border-radius: 20px; }
+  .video .shade { background: linear-gradient(0deg, rgba(17, 41, 71, .9) 0%, rgba(17, 41, 71, .2) 70%); }
+  .video-copy { left: 20px; right: 20px; top: auto; bottom: 24px; translate: none; width: auto; }
+  .video-copy h3 { font-size: 26px; line-height: 31px; }
+  .recognition-copy h3 { font-size: 24px; line-height: 29px; }
+  .seals { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 360px; }
+
+  /* series: cards stack, photo on top */
+  .card { flex-direction: column; min-height: 0; }
+  .card .photo { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .card-body { padding: 24px 20px 28px; }
+  .card .spacer { display: none; }
+  .read { margin-top: 4px; }
+
+  /* next */
+  .next .wrap { padding: 175px 16px 80px; }
+  .next-copy p { font-size: 17px; line-height: 29px; }
+  .next-ctas { flex-direction: column; align-items: stretch; width: 100%; }
+  .next-ctas .btn { white-space: normal; text-align: center; }
+
+  /* footer: one column */
+  .site-footer .wrap { grid-template-columns: 1fr; padding: 48px 16px 32px 40px; row-gap: 28px; }
+  .f-col .f-head { margin-top: 0; }
+  .f-bottom { grid-template-columns: 1fr; margin-top: 16px; }
+  .f-bottom .f-small:first-child { grid-row: auto; }
+  .f-bottom > :not(:first-child) { justify-self: start; }
+  .f-small, .f-link { white-space: normal !important; }
+}
