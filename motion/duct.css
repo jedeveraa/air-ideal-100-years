@@ -1,15 +1,12 @@
-/* Scroll-drawn duct line, ported from 100-years-v2 ("The Duct Line").
+/* Scroll-drawn duct timeline, same behavior as v1 / 100-years-v2 ("The Duct Line").
    Only active when motion/duct.js adds html.duct-anim. Without it (no JS, reduced motion,
-   or the pixel-diff run) the line shows its finished state from the Figma frame. */
-html.duct-anim .duct .route { display: inline; stroke-opacity: .18; stroke-dasharray: 1 9; }
+   or the pixel-diff run) the line shows its finished state from the Figma frame.
+   v2 diffusers have a dot instead of v1's X: white box with a red dot until the line reaches it,
+   then the Figma state (red box, light dot). */
+html.duct-anim .duct .route { display: inline; stroke-opacity: .18; stroke-dasharray: 1 9; stroke-linecap: round; }
 html.duct-anim .duct .node rect { fill: var(--white); transition: fill .3s ease; }
-html.duct-anim .duct .node path { stroke: var(--signal-red); transition: stroke .3s ease; }
+html.duct-anim .duct .node circle { fill: var(--signal-red); transition: fill .3s ease; }
 html.duct-anim .duct .node.is-on rect { fill: var(--signal-red); }
-html.duct-anim .duct .node.is-on path { stroke: var(--white); }
+html.duct-anim .duct .node.is-on circle { fill: var(--dot); }
 html.duct-anim .duct .branch { opacity: 0; transition: opacity .3s ease; }
 html.duct-anim .duct .branch.is-on { opacity: 1; }
-
-/* Air flowing out of the outlet on the red band (v2: dashes move down, 1.6s loop).
-   Two dash periods per loop (26 units), so the loop is seamless. */
-html.duct-anim .outlet .airflow path { animation: airflow 1.6s linear infinite; }
-@keyframes airflow { from { stroke-dashoffset: 2.786; } to { stroke-dashoffset: -23.214; } }

@@ -47,7 +47,7 @@
 .js [data-write] {
   width: max-content;
   padding: 30px 40px 90px;
-  margin: -21px 0 -90px 385px;
+  margin: -30px 0 -90px 385px;
   -webkit-mask: linear-gradient(90deg, #000 40%, transparent 60%) 100% 0 / 250% 100% no-repeat;
   mask: linear-gradient(90deg, #000 40%, transparent 60%) 100% 0 / 250% 100% no-repeat;
   animation: m-write 1.3s var(--ease-io) calc(var(--load-base) + 100ms) forwards;
@@ -97,7 +97,7 @@
    Colors per role, matched to the live buttons:
      red CTA           → Heritage Blue  (live "All Articles")
      outline on color  → white, red text (live "Contact Us" outline on the red band)
-     white on red band → Heritage Blue, white text */
+   v2: both sit on the Heritage Blue band, so the red one darkens to Deep Navy instead. */
 .js .btn {
   --btn-ease: .12s cubic-bezier(.45, .05, .55, .95);
   --hover-fill: var(--heritage-blue);
@@ -118,6 +118,7 @@
 }
 .js .btn--ghost::after { inset: -2px; }   /* covers the 2px border too, like the live outline buttons */
 .js .btn--ghost { --hover-fill: var(--white); --hover-fg: var(--signal-red); }
+.js .next .btn--red { --hover-fill: var(--deep-navy); }
 .js .btn:focus-visible { color: var(--hover-fg); filter: brightness(.9) contrast(1.2); }
 .js .btn:focus-visible::after { opacity: 1; }
 @media (hover: hover) and (pointer: fine) {
@@ -126,21 +127,21 @@
 }
 .js .btn:active { scale: .97; }
 
-/* ---------- Article cards: whole card clicks through, photo zooms 1.1 (airideal.com blog card) ---------- */
-.js .card .photo img { transition: scale .3s ease-in-out; }
+/* ---------- Story cards: whole card clicks through (data-card-link), the link darkens ---------- */
+.js .story { cursor: pointer; }
 .js .read { transition: color var(--ease-hover); }
+.js .read svg { transition: translate .25s var(--ease-ui); }
 @media (hover: hover) and (pointer: fine) {
-  .js .card:hover .photo img { scale: 1.1; }
-  .js .card:hover .read, .js .read:hover { color: var(--signal-red-deep); }
+  .js .story:hover .read, .js .read:hover { color: var(--signal-red-deep); }
+  .js .story:hover .read svg { translate: 3px 0; }
 }
 
-/* ---------- Video: photo eases in, play button grows (v2) ---------- */
+/* ---------- Video band: photo eases in a touch, play button grows (v2) ---------- */
 .js .video { cursor: pointer; }
-.js .video > img { transition: scale .3s var(--ease-ui); }
-.js .video[data-reveal] > img { transition: scale 1.4s var(--ease-out); }   /* slow settle only while revealing */
+.js .video-bg { transition: scale .6s var(--ease-ui); }
 .js .play { transition: background-color var(--ease-hover), scale .3s var(--ease-ui); }
 @media (hover: hover) and (pointer: fine) {
-  .js .video:hover > img { scale: 1.03; }
+  .js .video:hover .video-bg { scale: 1.03; }
   .js .video:hover .play { background-color: var(--signal-red-deep); scale: 1.06; }
 }
 

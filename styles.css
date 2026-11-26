@@ -1,5 +1,7 @@
-/* Air Ideal: 100th Years Landing Page
-   Built from Figma file 3jUr2g0XHCeKuLwNKnfiPt, frame "100th Years Landing Page" (1:2), 1440 x 10719.
+/* Air Ideal: 100th Years Landing Page, version 2
+   Built from Figma file 3jUr2g0XHCeKuLwNKnfiPt, frame "100th Years Landing Page v1" (1:2), 1440 x 7696
+   (the page ends at the footer bottom, 7626; the frame has 70px of empty white below it).
+   Version 1 of this build lives in ../100-years-figma. Header and footer are unchanged from v1.
    Content sits in a centered 1440 box; section backgrounds run full width.
    Line heights are whole pixels: Figma rounds every % line height (18px x 180% = 32px, not 32.4). */
 
@@ -18,6 +20,7 @@
   --mist: #f6f8fa;
   --blush: #fef8f7;
   --footer-bg: #f5f5f5;
+  --dot: #d9d9d9;
   --white: #ffffff;
   --frame: 1440px;
   --slab: 'Roboto Slab', Georgia, serif;
@@ -37,9 +40,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .page { position: relative; overflow-x: clip; }
 .wrap { position: relative; width: var(--frame); margin: 0 auto; }
-.upper { text-transform: uppercase; }
 .red { color: var(--signal-red); }
-.blue { color: var(--heritage-blue); }
 
 /* Eyebrow: three 5px squares, gap 4 */
 .dashes { display: flex; gap: 4px; height: 5px; }
@@ -49,7 +50,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .dashes.on-dark i:nth-child(2) { background: var(--signal-red); }
 
 /* Type styles */
-.h2 { font: 700 48px/55px var(--slab); text-transform: uppercase; }
+.h2 { font: 700 48px/55px var(--slab); text-transform: uppercase; color: var(--heritage-blue); }
 .lead { font-size: 18px; line-height: 32px; }
 
 /* Buttons */
@@ -57,7 +58,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font: 600 14px/21px var(--sans); white-space: nowrap; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 .btn--red { background: var(--signal-red); color: var(--white); }
-.btn--white { background: var(--white); color: var(--signal-red); }
 .btn--ghost { border: 2px solid var(--white); color: var(--white); }
 
 /* Photos: Figma image adjustments as CSS filters, "Era tint" as a Color-blend layer */
@@ -68,7 +68,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .fx-70s { filter: saturate(.45); }
 .fx-00s { filter: saturate(.85); }
 
-/* ============ Header ============ */
+/* ============ Header (unchanged from v1) ============ */
 .site-header { position: absolute; top: 0; left: 0; right: 0; z-index: 20; }
 .site-header .wrap { height: 107px; }
 .logo { position: absolute; left: 71px; top: 0; width: 160px; height: 107px; }
@@ -80,121 +80,86 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-radius: 20px; background: rgba(255, 255, 255, .22); font: 700 17px/28px var(--sans); color: var(--white); white-space: nowrap; }
 .phone svg { width: 16px; height: 16px; }
 
-/* ============ Hero (0 to 830) ============ */
-.hero { position: relative; z-index: 10; height: 830px; color: var(--white);
+/* ============ Hero (0 to 715) ============ */
+.hero { position: relative; z-index: 10; color: var(--white);
   background: linear-gradient(rgba(23, 71, 137, .72), rgba(23, 71, 137, .72)), url(images/hero-bg.jpg) center / cover no-repeat, var(--heritage-blue); }
-.hero .wrap { height: 830px; padding-top: 160px; }
-.centennial { margin-left: 656px; display: flex; align-items: center; gap: 14px; width: max-content;
-  font: 700 20px/24px var(--slab); }
-.centennial .dashes i { background: var(--white); }
-.hero-script { margin: 9px 0 0 425px; font: 400 182px/186px var(--script); letter-spacing: -.02em; white-space: nowrap; }
-.hero-title { margin: 9px 0 0 139px; width: 1161px; text-align: center; font: 700 62px/63px var(--slab); text-transform: uppercase; }
-.hero-row { display: flex; align-items: flex-start; margin: 40px 0 0 139px; }
-.hero-intro { width: 661px; font-size: 19px; line-height: 33px; }
-.hero-ctas { display: flex; gap: 12px; align-items: flex-start; margin: 42px 0 0 59px; }
-/* Photo strip: first photo at x -134 like the frame. Uniform 14px gaps (Figma has one 16px gap, before photo 4). */
-.hero-strip { position: absolute; top: 710.47px; left: -134px; }
-.hero-strip .track { display: flex; gap: 14px; width: max-content; }
-.hero-strip .photo { width: 330px; height: 296.29px; flex: none; border-radius: 35px; background: none; }
+.hero .wrap { height: 715px; padding-top: 193px; }
+.hero-script { margin-left: 425px; font: 400 182px/186px var(--script); letter-spacing: -.02em; white-space: nowrap; }
+.hero-title { margin-left: 139px; width: 1161px; text-align: center; font: 700 62px/63px var(--slab); text-transform: uppercase; }
+.hero-intro { margin: 30px 0 0 216px; width: 1007px; text-align: center; font-size: 19px; line-height: 33px; }
 
-/* ============ Legacy (830 to 1902) ============ */
-.legacy .wrap { height: 1072px; padding-top: 269px; display: flex; align-items: flex-start; }
-.legacy-copy { margin-left: 128px; width: 620px; }
-.legacy-copy .h2 { margin-top: 18px; color: var(--heritage-blue); }
+/* ============ Legacy (715 to 1387) ============ */
+.legacy .wrap { height: 672px; padding-top: 86px; display: flex; align-items: flex-start; }
+.legacy-copy { margin-left: 140px; width: 620px; }
+.legacy-copy .h2 { margin-top: 18px; }
 .legacy-copy p { font-size: 18px; line-height: 32px; }
 .legacy-copy .h2 + p { margin-top: 28px; }
 .legacy-copy p + p { margin-top: 18px; }
-.milestones { display: flex; gap: 8px; margin-top: 48px; }
-.milestone { width: 201.33px; height: 139px; padding: 20px 22px; border-radius: 20px; background: var(--signal-red); color: var(--white);
-  display: flex; flex-direction: column; gap: 10px; }
-.milestone strong { font: 700 26px/26px var(--slab); }
-.milestone span { font-size: 14px; line-height: 21px; }
-.legacy-photo { margin: 44px 0 0 96px; width: 444px; height: 642px; border-radius: 35px; background: none; }
+.legacy-photo { margin-left: 96px; width: 444px; height: 500px; border-radius: 35px; background: none; }
 
-/* ============ Decades (1902 to 6167) ============ */
+/* ============ Decades (1387 to 4145) ============ */
 /* Navy band runs full width; Figma's 35px corners stay on the band's edges */
 .decades { background: var(--deep-navy); border-radius: 35px; }
-.decades .wrap { height: 4265px; padding: 120px 140px 128px;
+.decades .wrap { height: 2758px; padding: 120px 140px 128px;
   display: flex; flex-direction: column; gap: 120px; color: var(--white); }
+.decades .h2 { color: var(--white); }
 .heading-row { display: flex; align-items: flex-end; gap: 64px; }
 .heading-row > * { flex: 1 1 0; }
 .heading-row .h2 { margin-top: 20px; }
-.chapters { display: flex; flex-direction: column; gap: 128px; }
+.chapters { position: relative; display: flex; flex-direction: column; gap: 120px; }
 .chapter { display: flex; gap: 128px; align-items: flex-start; }
-.chapter-media { width: 516px; display: flex; flex-direction: column; gap: 14px; }
-.chapter-media figure { display: flex; flex-direction: column; gap: 10px; }
+.chapter-media { width: 516px; }
 .chapter-media .main { width: 516px; height: 355px; border-radius: 20px; }
-.chapter-media figcaption { font-size: 13px; line-height: 20px; }
-.pair { display: flex; gap: 14px; }
-.pair .photo { width: 251px; height: 251px; border-radius: 20px; }
+/* Figma: 15px between year and body in chapter 1, 30px in the others (kept as in the frame) */
 .chapter-text { width: 516px; padding-top: 6px; display: flex; flex-direction: column; gap: 30px; }
-.era { display: flex; flex-direction: column; gap: 10px; }
-.era-year { font: 700 64px/64px var(--slab); }
-.era-range { font: 700 29px/32px var(--slab); }
+.era-year { font: 700 51px/51px var(--slab); white-space: nowrap; }
 .chapter-body { width: 470px; display: flex; flex-direction: column; gap: 14px; }
-.chapter-body h3 { font: 700 26px/33px var(--slab); text-transform: uppercase; color: var(--signal-red); }
+.chapter-body h3 { font: 700 26px/33px var(--slab); text-transform: uppercase; }
 .chapter-body p { font-size: 17px; line-height: 31px; }
 
-/* ============ People and projects (6167 to 8663) ============ */
-.people .wrap { height: 2496px; padding-top: 95px; }
-.people-head { display: flex; align-items: flex-end; margin-left: 140px; }
-.people-head > div { width: 548px; }
-.people-head .h2 { margin-top: 12px; color: var(--heritage-blue); }
-.people-head .lead { width: 548px; margin-left: 64px; }
-.projects { display: flex; margin: 49px 0 0 143px; }
-.directory { width: 658px; height: 569px; border-radius: 35px; background: var(--heritage-blue); color: var(--white); padding: 42px 0 0 29px; }
-.directory h3 { font: 700 26px/34px var(--slab); white-space: nowrap; }
-.rows { position: relative; width: 603px; margin-top: 28px; }
-.rows::after { content: ''; position: absolute; left: 0; right: 0; top: 400px; height: 1px; background: rgba(255, 255, 255, .09); }
-.project { position: relative; display: flex; align-items: center; gap: 24px; width: 603px; height: 80px; padding: 18px 16px; border-radius: 14px;
-  text-align: left; }
-/* Active and hover state, from 100-years-v2: light highlight on the row, active year in red */
-.project { cursor: pointer; transition: background-color .2s ease; }
-.project .year { transition: color .2s ease; }
-.project.is-active { background-color: rgba(255, 255, 255, .08); }
-@media (hover: hover) and (pointer: fine) { .project:hover { background-color: rgba(255, 255, 255, .08); } }
-.project.is-active .year { color: var(--signal-red); }
-.project:focus-visible { outline: 2px solid var(--white); outline-offset: -2px; }
-.project::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(255, 255, 255, .09); }
-.project:nth-child(2)::before { top: -1px; }
-.project .txt { flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; }
-.project .name { font: 700 20px/26px var(--slab); }
-.project .where { font-size: 14px; line-height: 21px; }
-.project .year { font: 700 18px/22px var(--slab); }
-.preview { position: relative; width: 477px; height: 569px; margin-left: 22px; border-radius: 35px; }
-/* Project photos cross-fade (v2: opacity .4s) */
-.preview .slide { position: absolute; inset: 0; opacity: 0; filter: blur(2px);
-  transition: opacity 250ms cubic-bezier(.23, 1, .32, 1), filter 250ms cubic-bezier(.23, 1, .32, 1); }
-.preview .slide.is-active { opacity: 1; filter: none; }
-.preview.is-instant .slide { transition: none; }   /* keyboard focus swaps without a fade */
-.preview-cap { z-index: 2; }
-@media (prefers-reduced-motion: reduce) { .preview .slide, .project, .project .year { transition: none; } }
-.preview-cap { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; padding: 80px 28px 26px;
-  background: linear-gradient(rgba(10, 48, 116, 0), rgba(10, 48, 116, .92)); display: flex; flex-direction: column; gap: 2px; color: var(--white); }
-.preview-cap strong { font: 700 22px/29px var(--slab); white-space: nowrap; }
-.preview-cap span { font-size: 15px; line-height: 23px; white-space: nowrap; }
+/* Duct timeline (Figma "Duct line" 79:843): center line, a diffuser per era, branches alternate right and left */
+.chapters > .duct { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; z-index: 1; }
+.duct .run, .duct .route { fill: none; stroke: var(--signal-red); stroke-width: 4; }
+.duct .branch { stroke: var(--signal-red); stroke-width: 4; stroke-linecap: round; }
+.duct .node rect { fill: var(--signal-red); }
+.duct .node circle { fill: var(--dot); }
+.duct .route { display: none; }
 
-.quote { display: flex; align-items: flex-start; width: 1160px; height: 619px; margin: 50px 0 0 140px; padding: 69px 0 0 79px;
-  border-radius: 35px; background: var(--blush); }
-.quote .photo { width: 360px; height: 449.05px; border-radius: 35px; background: none; flex: none; }
-.quote-body { margin: 32px 0 0 62px; width: 592px; }
+/* ============ People and projects (4145 to 5264) ============ */
+.people .wrap { height: 1119px; padding-top: 104px; }
+.people-head { display: flex; align-items: flex-start; margin-left: 140px; }
+.people-head > div { width: 548px; }
+.people-head .h2 { margin-top: 16px; }
+.people-head .lead { width: 548px; margin: 95px 0 0 64px; }
+.crew { width: 1160px; height: 376px; margin: 54px 0 0 140px; border-radius: 35px; }
+
+.quote { position: relative; width: 1160px; height: 327px; margin: 39px 0 0 140px; border-radius: 35px; background: var(--blush); }
+.quote .photo { position: absolute; left: 45px; top: 38px; width: 258px; height: 252px; border-radius: 35px; background: none; }
+.quote-body { position: absolute; left: 351px; top: 56px; width: 770px; }
 .quote-mark { display: block; font: 700 120px/72px var(--slab); color: var(--signal-red); height: 72px; }
-.quote blockquote p { margin-top: -6.5px; font: 700 34px/48px var(--slab); color: var(--heritage-blue); }
-.quote figcaption { margin-top: 22px; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+.quote blockquote p { margin-top: -32px; font: 700 28px/39px var(--slab); color: var(--heritage-blue); }
+.quote figcaption { margin-top: 10px; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
 .quote figcaption strong { font-weight: 600; font-size: 17px; line-height: 26px; }
 .quote figcaption span { font-size: 15px; line-height: 23px; }
 
-.video { position: relative; width: 1160px; height: 497px; margin: 44px 0 0 140px; border-radius: 35px; color: var(--white); }
-.video .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17, 41, 71, .85) 0%, rgba(17, 41, 71, .2) 60%, rgba(17, 41, 71, .2) 100%); }
+/* ============ Video band (5264 to 5761) ============ */
+/* Figma "Employee video": the photo box is 1440 x 617 and starts 120px above the band, which clips it */
+.video { position: relative; overflow: hidden; background: var(--ink); color: var(--white); }
+.video-bg { position: absolute; left: 0; top: -120px; width: 100%; height: 617px; object-fit: cover; }
+.video .shade { position: absolute; left: 0; top: 0; width: 100%; height: 493px;
+  background: linear-gradient(90deg, rgba(17, 41, 71, .85) 0%, rgba(17, 41, 71, .2) 60%, rgba(17, 41, 71, .2) 100%); }
+.video .wrap { height: 497px; }
 .video-copy { position: absolute; left: 56px; top: 127.5px; width: 460px; display: flex; flex-direction: column; gap: 12px; }
-.video-copy h3 { font: 700 36px/43px var(--slab); text-transform: uppercase; }
+.video-copy h2 { font: 700 36px/43px var(--slab); text-transform: uppercase; }
 .video-copy p { font-size: 16px; line-height: 26px; }
 .play-row { display: flex; align-items: center; gap: 14px; padding-top: 16px; }
 .play { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; padding-left: 4px; border-radius: 999px; background: var(--signal-red); }
 .play svg { width: 22px; height: 22px; }
 .play-row span { font-weight: 600; font-size: 15px; line-height: 23px; white-space: nowrap; }
 
-.recognition { display: flex; align-items: center; gap: 64px; margin: 96px 0 0 140px; }
+/* ============ Recognition + Looking back (5761 to 6559) ============ */
+.looking-back .wrap { height: 798px; padding-top: 61px; }
+.recognition { display: flex; align-items: center; gap: 64px; margin-left: 140px; }
 .recognition-copy { width: 365px; display: flex; flex-direction: column; gap: 14px; }
 .recognition-copy h3 { font: 700 28px/34px var(--slab); text-transform: uppercase; color: var(--heritage-blue); }
 .recognition-copy p { font-size: 16px; line-height: 26px; }
@@ -205,41 +170,33 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .seal b { width: 130px; font: 700 14px/18px var(--slab); text-transform: uppercase; color: var(--heritage-blue); }
 .seal span { width: 130px; font-size: 11px; line-height: 15px; }
 
-/* ============ Centennial Series (8663 to 9522) ============ */
-.series { background: var(--mist); margin-bottom: 2px; }
-.series .wrap { height: 859px; padding: 83px 140px 0; }
-.series-head { display: flex; justify-content: space-between; align-items: flex-end; }
-.series-head > div { width: 720px; }
-.series-head .h2 { margin-top: 20px; color: var(--heritage-blue); }
-.series-head .lead { margin-top: 16px; }
-.articles { display: flex; gap: 16px; margin-top: 48px; }
-.card { flex: 1 1 0; display: flex; height: 388px; border-radius: 20px; background: var(--white); overflow: hidden; }
-.card .photo { width: 260px; height: 388px; flex: none; }
-.card-body { flex: 1 1 0; display: flex; flex-direction: column; gap: 12px; padding: 30px 28px; overflow: hidden; }
-.tag { align-self: flex-start; padding: 5px 14px; border-radius: 999px; background: var(--mist); font-size: 12px; line-height: 18px; white-space: nowrap; }
-.meta { font-size: 12px; line-height: 18px; white-space: nowrap; }
-.card h3 { font: 700 21px/27px var(--slab); text-transform: uppercase; color: var(--deep-navy); }
-.card p { font-size: 15px; line-height: 24px; }
-.card .meta { font-size: 12px; line-height: 18px; }
-.card .spacer { flex: 1 0 1px; }
-.read { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-weight: 500; font-size: 15px; line-height: 23px; color: var(--signal-red); }
+.stories-dashes { margin: 79px 0 0 140px; }
+.looking-back .h2 { margin: 12px 0 0 140px; white-space: nowrap; }
+.stories { display: flex; gap: 20px; margin: 38px 0 0 140px; }
+/* Figma places the two cards' text a little differently (title 23px vs 21px, other offsets); kept as in the frame */
+.story { width: 570px; height: 254px; border-radius: 35px; background: var(--mist); display: flex; flex-direction: column; align-items: flex-start; }
+.story h3 { width: 514px; font: 700 23px/30px var(--slab); text-transform: uppercase; color: var(--deep-navy); }
+.story p { width: 517px; margin-top: 20px; font-size: 15px; line-height: 24px; }
+.story .read { margin-top: 12px; }
+.story--a { padding: 46px 0 0 29px; }
+.story--b { padding: 40px 0 0 26px; }
+.story--b h3 { font-size: 21px; line-height: 27px; }
+.story--b p { margin-top: 8px; }
+.story--b .read { margin-top: 17px; }
+.read { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; line-height: 23px; color: var(--signal-red); white-space: nowrap; }
 .read svg { width: 16px; height: 16px; }
 
-/* ============ Next 100 (9524 to 10145) ============ */
-.next { position: relative; background: var(--signal-red); color: var(--white); }
-.next .wrap { height: 621px; }
-.grid-lines { position: absolute; left: calc(50% - 2000px); width: 4000px; max-width: none; height: 320px; pointer-events: none; }
-.grid-lines.a { top: 0; }
-.grid-lines.b { top: 310px; }
-.outlet { position: absolute; left: 672px; top: -1px; width: 96px; height: 176px; overflow: visible; }
-/* Figma's dashes: half dash, gap, dash, gap, half dash on each 26-unit line */
-.outlet .airflow path { stroke-dasharray: 5.571 7.429; stroke-dashoffset: 2.786; }
-.next-copy { position: absolute; left: 140px; top: 175px; width: 1160px; padding-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center; }
-.next-copy h2 { width: 1160px; font: 700 62px/67px var(--slab); text-transform: uppercase; }
-.next-copy p { width: 720px; font-size: 18px; line-height: 32px; }
-.next-ctas { display: flex; gap: 12px; align-items: flex-start; padding-top: 14px; }
+/* ============ Next 100 (6559 to 7050) ============ */
+.next { background: var(--heritage-blue); color: var(--white); margin-bottom: 2px; }   /* Figma leaves 2px of white above the footer */
+.next .wrap { height: 491px; }
+/* Figma has this block at x 113 (CTAs at 109); aligned to the page's 140 container on Jelo's request */
+.next-copy { padding: 78px 0 0 140px; width: 1300px; }
+.next-copy h2 { margin-top: 23px; font: 700 43px/46px var(--slab); text-transform: uppercase; }
+.next-sub { margin-top: 23px; font-size: 23px; line-height: 41px; }
+.next-sub + p { margin-top: 13px; font-size: 18px; line-height: 32px; }
+.next-ctas { display: flex; gap: 12px; align-items: flex-start; margin: 12px 0 0; padding-top: 14px; }
 
-/* ============ Footer (10145 to 10719) ============ */
+/* ============ Footer (7052 to 7626, unchanged from v1) ============ */
 .site-footer { position: relative; z-index: 1; background: var(--footer-bg); }
 .site-footer .wrap { height: 574.12px; }
 .footer-lines { position: absolute; left: 0; top: 0; width: 100%; height: 574.12px; }
@@ -252,12 +209,3 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .f-tiny { font-size: 13px; line-height: 20.5px; }
 .social { position: absolute; top: 110.72px; width: 46px; height: 47.16px; }
 .social svg { width: 46px; height: 47.16px; }
-
-/* ============ Duct line (layer over the page, Figma "Duct line" 28:2265) ============ */
-.duct-layer { position: absolute; top: 0; left: 50%; width: var(--frame); margin-left: calc(var(--frame) / -2); height: 10719px; z-index: 8; pointer-events: none; }
-.duct-layer svg { position: absolute; left: 0; top: 0; overflow: visible; }
-.duct .run, .duct .route { fill: none; stroke: var(--signal-red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.duct .branch { stroke: var(--signal-red); stroke-width: 4; stroke-linecap: round; }
-.duct .node rect { fill: var(--signal-red); stroke: var(--signal-red); stroke-width: 3; }
-.duct .node path { fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; }
-.duct .route { display: none; }

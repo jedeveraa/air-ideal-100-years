@@ -9,7 +9,6 @@
 <!-- xd-motion: everything that moves is scoped to html.js -->
 <link rel="stylesheet" href="motion/motion-core.css">
 <link rel="stylesheet" href="motion/duct.css">
-<link rel="stylesheet" href="motion/marquee.css">
 <link rel="stylesheet" href="motion/animations.css">
 <link rel="stylesheet" href="responsive.css"><!-- below 1440 only: the 1440 layout stays Figma-exact -->
 <script>
@@ -58,39 +57,11 @@
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <p class="centennial" data-load style="--d:0"><span>1927</span><span class="dashes" aria-hidden="true"><i></i><i></i><i></i></span><span>2027</span></p>
     <h1 id="hero-title">
       <span class="hero-script" style="display:block" data-write>100 years</span>
       <span class="hero-title" style="display:block;--d:5" data-load>of Keeping NYC Comfortable</span>
     </h1>
-    <div class="hero-row">
-      <p class="hero-intro" data-load style="--d:6">In 1927, a small oil burner company opened its doors on Long Island. A century later, Air Ideal keeps New York City buildings warm in winter and cool in summer, from pre-war walk-ups to glass towers. Here's how we got here, one decade at a time.</p>
-      <div class="hero-ctas" data-load style="--d:7">
-        <a class="btn btn--red" href="#decades">Follow our 100 years <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="#contact">Contact Air Ideal <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-    <!-- Photo marquee. The first 5 are the Figma frame; the rest (data-placeholder) are stand-ins
-         from this page until the real archive photos arrive. motion/marquee.js makes it scroll. -->
-    <div class="hero-strip" aria-hidden="true" data-load style="--d:8">
-      <div class="track">
-        <div class="photo"><img class="fx-bw" src="images/abbott-hardware.jpg" alt="" decoding="async"></div>
-        <div class="photo"><img class="fx-bw" src="images/nyc-views-loc.jpg" alt="" decoding="async"></div>
-        <div class="photo"><img class="fx-70s" src="images/bridge-1973.jpg" alt="" decoding="async"></div>
-        <div class="photo"><img class="fx-00s" src="images/aerial-east-river.jpg" alt="" decoding="async"></div>
-        <div class="photo"><img src="images/videoframe.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-bw" src="images/seventh-ave.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-bw" src="images/rockefeller-1933.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-bw" src="images/times-square.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-bw" src="images/abbott-construction.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-70s" src="images/westside-1973.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-70s" src="images/lower-manhattan-80s.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img class="fx-00s" src="images/shutterstock-2173235165.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img src="images/work-4.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img src="images/work-1.jpg" alt="" decoding="async"></div>
-        <div class="photo" data-placeholder><img src="images/hvac-techs.jpg" alt="" decoding="async"></div>
-      </div>
-    </div>
+    <p class="hero-intro" data-load style="--d:6">In 1927, a small oil burner company opened its doors on Long Island. A century later, Air Ideal keeps New York City buildings warm in winter and cool in summer, from pre-war walk-ups to glass towers. Here's how we got here, one decade at a time.</p>
   </div>
 </section>
 
@@ -101,11 +72,6 @@
       <h2 class="h2" data-reveal="blur" data-heading id="legacy-title">A Legacy Built by <span class="red">Generations</span></h2>
       <p data-reveal>Air Ideal began as the Ideal Oil Burner Company, a family business that kept furnaces and boilers running for homes and shops across Nassau County. Three generations of that family grew it into one of the region’s most trusted commercial HVAC contractors.</p>
       <p data-reveal>When the family was ready to step back, they didn’t sell to an outside firm. They handed the company to three of their own people, employees who came up through the shop and knew every customer by name. Today they lead Air Ideal with the same promise made in 1927: answer the call, do the job right, and stand behind the work.</p>
-      <ul class="milestones">
-        <li class="milestone" data-reveal><strong>1927</strong><span>The founding family opens the Ideal Oil Burner Company.</span></li>
-        <li class="milestone" data-reveal><strong>1950</strong><span>The company adds cooling and becomes Air Ideal.</span></li>
-        <li class="milestone" data-reveal><strong>Today</strong><span>Owned and led by three long-time employees.</span></li>
-      </ul>
     </div>
     <div class="photo legacy-photo" data-reveal="blur" data-photo><img class="fx-bw" src="images/esb-workman.jpg" alt="An ironworker high above Manhattan during construction of the Empire State Building"></div>
   </div>
@@ -116,25 +82,35 @@
     <div class="heading-row">
       <div>
         <span data-reveal="dashes" class="dashes on-dark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <h2 class="h2" data-reveal="blur" data-heading id="decades-title"><span class="red">100 Years</span> Through the Decades</h2>
+        <h2 class="h2" data-reveal="blur" data-heading id="decades-title">100 Years Through the Decades</h2>
       </div>
       <p class="lead" data-reveal>Every system we install starts with a single duct run. Follow ours from the coal-and-steam city of 1927 to the clean-energy buildings of today.</p>
     </div>
 
     <div class="chapters">
+      <!-- Duct timeline: Figma "Duct line" (79:843), drawn in the chapters' own coordinates (chapters start at y 1762).
+           Static markup is the finished state from the frame; motion/duct.js draws it on scroll. -->
+      <svg class="duct" width="1160" height="2255" viewBox="0 0 1160 2255" aria-hidden="true">
+        <path class="route" d="M580 52V1941"/>
+        <path class="run" d="M580 52V1941"/>
+        <path class="branch" data-y="37" d="M580 37H622"/>
+        <path class="branch" data-y="513" d="M580 513H538"/>
+        <path class="branch" data-y="982" d="M580 982H622"/>
+        <path class="branch" data-y="1458" d="M580 1458H538"/>
+        <path class="branch" data-y="1935" d="M580 1935H622"/>
+        <g class="node" data-y="37" transform="translate(565 22)"><rect width="30" height="30" rx="6"/><circle cx="15" cy="15" r="3"/></g>
+        <g class="node" data-y="513" transform="translate(565 498)"><rect width="30" height="30" rx="6"/><circle cx="15" cy="15" r="3"/></g>
+        <g class="node" data-y="982" transform="translate(565 967)"><rect width="30" height="30" rx="6"/><circle cx="15" cy="15" r="3"/></g>
+        <g class="node" data-y="1458" transform="translate(565 1443)"><rect width="30" height="30" rx="6"/><circle cx="15" cy="15" r="3"/></g>
+        <g class="node" data-y="1935" transform="translate(565 1920)"><rect width="30" height="30" rx="6"/><circle cx="15" cy="15" r="3"/></g>
+      </svg>
+
       <article class="chapter">
         <div class="chapter-media">
-          <figure>
-            <div class="photo main" data-reveal="blur" data-photo><img class="fx-bw" src="images/abbott-hardware.jpg" alt="A Bowery hardware store window full of tools, 1938"><span class="tint" style="opacity:.72"></span></div>
-            <figcaption>A Bowery hardware store, 1938. Tools of the trade.</figcaption>
-          </figure>
-          <div class="pair">
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-bw" src="images/seventh-ave.jpg" alt="Seventh Avenue seen from above"><span class="tint" style="opacity:.72"></span></div>
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-bw" src="images/rockefeller-1933.jpg" alt="Rockefeller Center at night, 1933"><span class="tint" style="opacity:.72"></span></div>
-          </div>
+          <div class="photo main" data-reveal="blur" data-photo><img class="fx-bw" src="images/abbott-hardware.jpg" alt="A Bowery hardware store window full of tools, 1938"><span class="tint" style="opacity:.72"></span></div>
         </div>
-        <div class="chapter-text">
-          <div class="era" data-reveal><p class="era-year">1927</p><p class="era-range">to the 1930s</p></div>
+        <div class="chapter-text" style="gap:15px">
+          <p class="era-year" data-reveal>1927 to the 1930s</p>
           <div class="chapter-body" data-reveal>
             <h3>Where it began</h3>
             <p>The Ideal Oil Burner Company opens for business while the skyline races upward. The work is heat: oil burners, boilers and steam systems for homes, shops and apartment houses across Long Island and Queens. Air conditioning is still a novelty found in movie palaces.</p>
@@ -144,37 +120,23 @@
 
       <article class="chapter">
         <div class="chapter-text">
-          <div class="era" data-reveal><p class="era-year">1940s</p><p class="era-range">to the 1960s</p></div>
+          <p class="era-year" data-reveal>1940s to the 1960s</p>
           <div class="chapter-body" data-reveal>
             <h3>A changing industry</h3>
             <p>After the war, cooling moves from theaters into offices and homes. In 1950 the company adds air conditioning to its trade and takes a new name: Air Ideal. By the 1960s our crews are installing central air in new Midtown towers and Long Island office parks.</p>
           </div>
         </div>
         <div class="chapter-media">
-          <figure>
-            <div class="photo main" data-reveal="blur" data-photo><img class="fx-bw" src="images/nyc-views-loc.jpg" alt="Times Square at night with neon signs"><span class="tint" style="opacity:.62"></span></div>
-            <figcaption>Times Square after dark. Neon outside, fans inside.</figcaption>
-          </figure>
-          <div class="pair">
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-bw" src="images/times-square.jpg" alt="Times Square street view"><span class="tint" style="opacity:.62"></span></div>
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-bw" src="images/abbott-construction.jpg" alt="Midtown building under construction"><span class="tint" style="opacity:.62"></span></div>
-          </div>
+          <div class="photo main" data-reveal="blur" data-photo><img class="fx-bw" src="images/nyc-views-loc.jpg" alt="Times Square at night with neon signs"><span class="tint" style="opacity:.62"></span></div>
         </div>
       </article>
 
       <article class="chapter">
         <div class="chapter-media">
-          <figure>
-            <div class="photo main" data-reveal="blur" data-photo><img class="fx-70s" src="images/bridge-1973.jpg" alt="Brooklyn Bridge into Lower Manhattan, 1973"><span class="tint" style="opacity:.4"></span></div>
-            <figcaption>Into Lower Manhattan, 1973. Energy prices change everything.</figcaption>
-          </figure>
-          <div class="pair">
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-70s" src="images/westside-1973.jpg" alt="West Side street, 1973"><span class="tint" style="opacity:.4"></span></div>
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-70s" src="images/lower-manhattan-80s.jpg" alt="Lower Manhattan towers in the 1980s"><span class="tint" style="opacity:.4"></span></div>
-          </div>
+          <div class="photo main" data-reveal="blur" data-photo><img class="fx-70s" src="images/bridge-1973.jpg" alt="Brooklyn Bridge into Lower Manhattan, 1973"><span class="tint" style="opacity:.4"></span></div>
         </div>
         <div class="chapter-text">
-          <div class="era" data-reveal><p class="era-year">1970s</p><p class="era-range">to the 1990s</p></div>
+          <p class="era-year" data-reveal>1970s to the 1990s</p>
           <div class="chapter-body" data-reveal>
             <h3>The next generation</h3>
             <p>A new generation of the family takes over just as the energy crisis changes how buildings use power. Air Ideal starts offering preventive maintenance agreements, so owners spend less on emergencies and more on systems that last.</p>
@@ -184,37 +146,23 @@
 
       <article class="chapter">
         <div class="chapter-text">
-          <div class="era" data-reveal><p class="era-year">2000s</p><p class="era-range">to the 2020s</p></div>
+          <p class="era-year" data-reveal>2000s to the 2020s</p>
           <div class="chapter-body" data-reveal>
             <h3>Growing with the city</h3>
             <p>As New York builds up and out, Air Ideal grows with it. We open a Manhattan office, launch 24/7 emergency service, and take on design-build work for hospitals, schools, law firms, restaurants and luxury residences.</p>
           </div>
         </div>
         <div class="chapter-media">
-          <figure>
-            <div class="photo main" data-reveal="blur" data-photo><img class="fx-00s" src="images/aerial-east-river.jpg" alt="Midtown skyline from the East River"><span class="tint" style="opacity:.12"></span></div>
-            <figcaption>Midtown from the East River. More towers, more tons of cooling.</figcaption>
-          </figure>
-          <div class="pair">
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-00s" src="images/shutterstock-2173235165.jpg" alt="Rooftop HVAC equipment"><span class="tint" style="opacity:.12"></span></div>
-            <div class="photo" data-reveal="blur" data-photo><img class="fx-00s" src="images/work-3.jpg" alt="Air Ideal installation"><span class="tint" style="opacity:.12"></span></div>
-          </div>
+          <div class="photo main" data-reveal="blur" data-photo><img class="fx-00s" src="images/aerial-east-river.jpg" alt="Midtown skyline from the East River"><span class="tint" style="opacity:.12"></span></div>
         </div>
       </article>
 
       <article class="chapter">
         <div class="chapter-media">
-          <figure>
-            <div class="photo main" data-reveal="blur" data-photo><img src="images/videoframe.jpg" alt="A rooftop unit lifted into place in Midtown"></div>
-            <figcaption>A rooftop unit goes up in Midtown.</figcaption>
-          </figure>
-          <div class="pair">
-            <div class="photo" data-reveal="blur" data-photo><img src="images/work-4.jpg" alt="Fabricated ductwork"></div>
-            <div class="photo" data-reveal="blur" data-photo><img src="images/work-1.jpg" alt="Air Ideal technician at work"></div>
-          </div>
+          <div class="photo main" data-reveal="blur" data-photo><img src="images/videoframe.jpg" alt="A rooftop unit lifted into place in Midtown"></div>
         </div>
         <div class="chapter-text">
-          <div class="era" data-reveal><p class="era-year">2020s</p><p class="era-range">to 2027</p></div>
+          <p class="era-year" data-reveal>2020s to 2027</p>
           <div class="chapter-body" data-reveal>
             <h3>The next chapter</h3>
             <p>Three long-time employees take ownership, keeping Air Ideal independent and local. Today’s work is cleaner air, lower energy use and smarter controls, helping buildings meet Local Law 97 and get ready for the next 100 years.</p>
@@ -235,27 +183,7 @@
       <p class="lead" data-reveal>Every building we’ve worked on has a crew behind it. Here are a few of the projects, and the people, that shaped our last hundred years.</p>
     </div>
 
-    <div class="projects">
-      <div class="directory" data-reveal>
-        <h3>Project directory</h3>
-        <div class="rows">
-          <button class="project is-active" type="button" data-i="0" aria-pressed="true"><span class="txt"><span class="name">Park Avenue Office Tower</span><span class="where">Rooftop unit replacement, Midtown</span></span><span class="year">2024</span></button>
-          <button class="project" type="button" data-i="1" aria-pressed="false"><span class="txt"><span class="name">Fifth Avenue Retail Flagship</span><span class="where">Design-build HVAC, Flatiron</span></span><span class="year">2022</span></button>
-          <button class="project" type="button" data-i="2" aria-pressed="false"><span class="txt"><span class="name">Williamsburg Restaurant Group</span><span class="where">Kitchen exhaust and cooling, Brooklyn</span></span><span class="year">2021</span></button>
-          <button class="project" type="button" data-i="3" aria-pressed="false"><span class="txt"><span class="name">Law Firm Headquarters</span><span class="where">VRF system upgrade, Lower Manhattan</span></span><span class="year">2019</span></button>
-          <button class="project" type="button" data-i="4" aria-pressed="false"><span class="txt"><span class="name">Pre-war Co-op Building</span><span class="where">Boiler to heat pump conversion, Upper West Side</span></span><span class="year">2018</span></button>
-        </div>
-      </div>
-      <figure class="photo preview" aria-live="polite" data-reveal="blur" data-photo>
-        <div class="slide is-active" data-p="0"><img src="images/project-park-ave.jpg" alt="A rooftop unit lifted by crane above a Park Avenue office tower"></div>
-        <!-- Placeholder photos for projects 2 to 5, carried over from 100-years-v2 -->
-        <div class="slide" data-p="1"><img src="images/project-fifth-ave.jpg" alt="Bright multi-level retail atrium" loading="lazy"></div>
-        <div class="slide" data-p="2"><img src="images/project-williamsburg.jpg" alt="Restaurant dining room with set tables" loading="lazy"></div>
-        <div class="slide" data-p="3"><img src="images/project-law-firm.jpg" alt="Scales of justice on a law office desk" loading="lazy"></div>
-        <div class="slide" data-p="4"><img src="images/project-prewar-coop.jpg" alt="Pre-war apartment building facades" loading="lazy"></div>
-        <figcaption class="preview-cap"><strong id="preview-name">Park Avenue Office Tower</strong><span id="preview-where">Rooftop unit replacement, Midtown, 2024</span></figcaption>
-      </figure>
-    </div>
+    <div class="photo crew" data-reveal="blur" data-photo><img src="images/people-crew.jpg" alt="The Air Ideal crew in safety vests, standing together on a job site"></div>
 
     <figure class="quote">
       <div class="photo" data-reveal="blur" data-photo><img src="images/work-2.jpg" alt="Air Ideal technician servicing an indoor unit"></div>
@@ -265,20 +193,26 @@
         <figcaption data-reveal><strong>Tony Russo</strong><span>Service Manager, 31 years at Air Ideal</span></figcaption>
       </div>
     </figure>
+  </div>
+</section>
 
-    <div class="photo video" data-reveal="blur" data-photo>
-      <img src="images/hvac-techs2.jpg" alt="">
-      <span class="shade"></span>
-      <div class="video-copy">
-        <h3 data-reveal="blur" data-heading>A day on the job with our service team</h3>
-        <p data-reveal>From the first call at 6 a.m. to the last rooftop at dusk. Meet the people who keep New York comfortable.</p>
-        <div class="play-row" data-reveal>
-          <button class="play" type="button" aria-label="Play the film"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 3.48325V18.5166C5.5 19.2499 6.325 19.7083 6.96667 19.3416L18.8833 11.8249C19.4333 11.4582 19.4333 10.6332 18.8833 10.2666L6.96667 2.74991C6.325 2.29158 5.5 2.74991 5.5 3.48325Z" fill="#fff"/></svg></button>
-          <span>Watch the film, 2:45</span>
-        </div>
+<section class="video" aria-labelledby="video-title">
+  <img class="video-bg" src="images/hvac-techs2.jpg" alt="">
+  <span class="shade"></span>
+  <div class="wrap">
+    <div class="video-copy">
+      <h2 id="video-title" data-reveal="blur" data-heading>A day on the job with our service team</h2>
+      <p data-reveal>From the first call at 6 a.m. to the last rooftop at dusk. Meet the people who keep New York comfortable.</p>
+      <div class="play-row" data-reveal>
+        <button class="play" type="button" aria-label="Play the film"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.5 3.48325V18.5166C5.5 19.2499 6.325 19.7083 6.96667 19.3416L18.8833 11.8249C19.4333 11.4582 19.4333 10.6332 18.8833 10.2666L6.96667 2.74991C6.325 2.29158 5.5 2.74991 5.5 3.48325Z" fill="#fff"/></svg></button>
+        <span>Watch the film, 2:45</span>
       </div>
     </div>
+  </div>
+</section>
 
+<section class="looking-back" aria-labelledby="stories-title">
+  <div class="wrap">
     <div class="recognition">
       <div class="recognition-copy">
         <h3 data-reveal="blur" data-heading>Recognition along the way</h3>
@@ -291,69 +225,34 @@
         <li class="seal" data-reveal><strong>2017</strong><b>Top Workplace</b><span>Long Island business press</span></li>
       </ul>
     </div>
-  </div>
-</section>
 
-<section class="series" aria-labelledby="series-title">
-  <div class="wrap">
-    <div class="series-head">
-      <div>
-        <span data-reveal="dashes" class="dashes" aria-hidden="true"><i></i><i></i><i></i></span>
-        <h2 class="h2" data-reveal="blur" data-heading id="series-title">Read the <span class="red">Centennial</span> Series</h2>
-        <p class="lead" data-reveal>Two new articles look back at a century of heating, cooling and building in New York City.</p>
-      </div>
-      <a class="btn btn--red" href="#" data-reveal>All Articles <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-    <div class="articles">
-      <article class="card" data-reveal data-card-link>
-        <div class="photo"><img src="images/hvac-techs.jpg" alt="Inside an HVAC control panel"></div>
-        <div class="card-body">
-          <span class="tag">Centennial Series</span>
-          <p class="meta">January 12, 2027 | 8 min read</p>
-          <h3>100 Years of HVAC Innovation in NYC</h3>
-          <p>From coal boilers and window units to VRF and heat pumps: how heating and cooling changed in New York, and what it meant for the buildings we serve.</p>
-          <span class="spacer"></span>
-          <a class="read" href="#">Read Article <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
+    <span data-reveal="dashes" class="dashes stories-dashes" aria-hidden="true"><i></i><i></i><i></i></span>
+    <h2 class="h2" data-reveal="blur" data-heading id="stories-title">Looking Back on <span class="red">HVAC</span> in NYC</h2>
+    <div class="stories">
+      <article class="story story--a" data-reveal data-card-link>
+        <h3>100 Years of HVAC Innovation in NYC</h3>
+        <p>From coal boilers and window units to VRF and heat pumps: how heating and cooling changed in New York, and what it meant for the buildings we serve.</p>
+        <a class="read" href="#">Explore the Story <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
-      <article class="card" data-reveal data-card-link>
-        <div class="photo"><img class="fx-bw" src="images/hine-mechanic.jpg" alt="A mechanic working on a steam pump, by Lewis Hine"><span class="tint" style="opacity:.72"></span></div>
-        <div class="card-body">
-          <span class="tag">Centennial Series</span>
-          <p class="meta">February 9, 2027 | 10 min read</p>
-          <h3>How Buildings in NYC Have Changed Over 100 Years</h3>
-          <p>Walk-ups, Art Deco towers, glass curtain walls and passive house retrofits. A look at how the city’s buildings grew, and how their systems kept up.</p>
-          <span class="spacer"></span>
-          <a class="read" href="#">Read Article <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
+      <article class="story story--b" data-reveal data-card-link>
+        <h3>How Buildings in NYC Have Changed Over 100 Years</h3>
+        <p>Walk-ups, Art Deco towers, glass curtain walls and passive house retrofits. A look at how the city’s buildings grew, and how their systems kept up.</p>
+        <a class="read" href="#">Explore the Story <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
     </div>
   </div>
 </section>
 
 <section class="next" id="contact" aria-labelledby="next-title">
-  <img class="grid-lines a" src="images/svg/grid-wide.svg" alt="" aria-hidden="true">
-  <img class="grid-lines b" src="images/svg/grid-wide.svg" alt="" aria-hidden="true">
   <div class="wrap">
-    <!-- Duct outlet (Figma 28:2238). The airflow lines are whole paths dashed like Figma's segments,
-         so motion/duct.css can make the air flow (v2 behavior). -->
-    <svg class="outlet" viewBox="0 0 96 176" fill="none" aria-hidden="true">
-      <path d="M46 0H50V70C50 71.1046 49.1046 72 48 72C46.8954 72 46 71.1046 46 70V0Z" fill="#fff"/>
-      <path d="M67 75H29C23.4772 75 19 79.4772 19 85V123C19 128.523 23.4772 133 29 133H67C72.5228 133 77 128.523 77 123V85C77 79.4772 72.5228 75 67 75Z" fill="#fff"/>
-      <path d="M30 86L66 122M66 86L30 122" stroke-width="3" stroke-linecap="round" stroke="#D03730"/>
-      <path d="M34 86H62C64.2091 86 66 87.7909 66 90V118C66 120.209 64.2091 122 62 122H34C31.7909 122 30 120.209 30 118V90C30 87.7909 31.7909 86 34 86Z" stroke-width="2" stroke="#D03730"/>
-      <g class="airflow" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
-        <path pathLength="26" d="M48 146V172"/>
-        <path pathLength="26" d="M30 146C24 154 20 162 18 172"/>
-        <path pathLength="26" d="M66 146C72 154 76 162 78 172"/>
-      </g>
-    </svg>
     <div class="next-copy">
+      <span data-reveal="dashes" class="dashes on-dark" aria-hidden="true"><i></i><i></i><i></i></span>
       <h2 id="next-title" data-reveal="blur" data-heading>Here’s to the Next 100 Years</h2>
+      <p class="next-sub" data-reveal>A Century of Innovation. A Future of Possibilities</p>
       <p data-reveal>For 100 years, Air Ideal has been adapting, innovating, and delivering HVAC solutions to meet the needs of New York City’s ever-changing buildings. As we celebrate this milestone, we look forward to continuing that tradition and building on the relationships that have brought us this far.</p>
       <div class="next-ctas" data-reveal>
+        <a class="btn btn--red" href="#">Contact Air Ideal <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn btn--ghost" href="#">Learn More About Our HVAC Services <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--white" href="#">Contact Air Ideal <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
@@ -399,37 +298,10 @@
     </div>
   </div>
 </footer>
-
-<!-- Duct line: Figma "Duct line" (28:2265). Static markup is the finished state from the frame.
-     motion/duct.js turns it into the scroll-drawn line from 100-years-v2. -->
-<div class="duct-layer" aria-hidden="true">
-  <svg class="duct" width="1440" height="10719" viewBox="0 0 1440 10719">
-    <path class="route" transform="translate(70 1154)" d="M0 0L0 1039.3718C0 1057.2859 9.3333 1066.2429 28 1066.2429L325 1066.2429L622 1066.2429C640.6666 1066.2429 650 1075.1999 650 1093.114L650 4909.5459C650 4927.46 640.6666 4936.417 622 4936.417L325 4936.417L28 4936.417C9.3333 4936.417 0 4945.3745 0 4963.2886L0 8283.709C0 8301.6231 9.3333 8310.5801 28 8310.5801L622 8310.5801C640.6666 8310.5801 650 8319.5371 650 8337.4512L650 8372"/>
-    <path class="run" transform="translate(70 1154)" d="M0 0L0 1039.3718C0 1057.2859 9.3333 1066.2429 28 1066.2429L325 1066.2429L622 1066.2429C640.6666 1066.2429 650 1075.1999 650 1093.114L650 4909.5459C650 4927.46 640.6666 4936.417 622 4936.417L325 4936.417L28 4936.417C9.3333 4936.417 0 4945.3745 0 4963.2886L0 8283.709C0 8301.6231 9.3333 8310.5801 28 8310.5801L622 8310.5801C640.6666 8310.5801 650 8319.5371 650 8337.4512L650 8372"/>
-    <g class="ahu">
-      <path d="M59.5 1140.5H80.5C83.8137 1140.5 86.5 1143.1863 86.5 1146.5V1161.5C86.5 1164.8137 83.8137 1167.5 80.5 1167.5H59.5C56.1863 1167.5 53.5 1164.8137 53.5 1161.5V1146.5C53.5 1143.1863 56.1863 1140.5 59.5 1140.5Z" fill="#0a3074" stroke="#d03730" stroke-width="3"/>
-      <circle cx="70" cy="1154" r="8" fill="none" stroke="#fff" stroke-width="2"/>
-      <path d="M70 1146V1162M62 1154H78" fill="none" stroke="#fff" stroke-width="2"/>
-    </g>
-    <path class="branch" data-y="2325" d="M720 2325H762"/>
-    <g class="node" data-y="2325" transform="translate(705 2310)"><rect x="1.5" y="1.5" width="27" height="27" rx="4.5"/><path d="M8.4 8.4L21.6 21.6M21.6 8.4L8.4 21.6"/></g>
-    <path class="branch" data-y="3101" d="M720 3101H678"/>
-    <g class="node" data-y="3101" transform="translate(705 3086)"><rect x="1.5" y="1.5" width="27" height="27" rx="4.5"/><path d="M8.4 8.4L21.6 21.6M21.6 8.4L8.4 21.6"/></g>
-    <path class="branch" data-y="3878" d="M720 3878H762"/>
-    <g class="node" data-y="3878" transform="translate(705 3863)"><rect x="1.5" y="1.5" width="27" height="27" rx="4.5"/><path d="M8.4 8.4L21.6 21.6M21.6 8.4L8.4 21.6"/></g>
-    <path class="branch" data-y="4655" d="M720 4655H678"/>
-    <g class="node" data-y="4655" transform="translate(705 4640)"><rect x="1.5" y="1.5" width="27" height="27" rx="4.5"/><path d="M8.4 8.4L21.6 21.6M21.6 8.4L8.4 21.6"/></g>
-    <path class="branch" data-y="5439" d="M720 5439H762"/>
-    <g class="node" data-y="5439" transform="translate(705 5424)"><rect x="1.5" y="1.5" width="27" height="27" rx="4.5"/><path d="M8.4 8.4L21.6 21.6M21.6 8.4L8.4 21.6"/></g>
-  </svg>
-</div>
-
 </div>
 
 <script src="motion/motion-core.js" defer></script>
 <script src="motion/duct.js" defer></script>
-<script src="motion/marquee.js" defer></script>
-<script src="scripts/directory.js" defer></script>
 <script src="scripts/responsive.js" defer></script>
 </body>
 </html>

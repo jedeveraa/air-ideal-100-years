@@ -1,8 +1,0 @@
-/* Hero photo marquee: the strip slides left forever.
-   marquee.js adds a copy of the photos on each side and sets --set (the width of one set),
-   so the original set starts exactly where the Figma frame has it. */
-html.marquee-anim .hero-strip .track { animation: marquee var(--dur, 120s) linear infinite; will-change: transform; }
-@keyframes marquee {
-  from { transform: translateX(calc(var(--set) * -1)); }
-  to { transform: translateX(calc(var(--set) * -2)); }
-}
